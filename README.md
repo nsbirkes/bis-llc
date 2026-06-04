@@ -1,3 +1,5 @@
+![BIS LLC Banner](images/bis_background.png)
+
 # BIS LLC Website
 
 Official website for Birkes Innovative Solutions LLC.
