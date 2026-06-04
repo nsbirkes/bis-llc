@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birkes Innovative Solutions LLC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-primary: #0A0F1E;
+      --bg-secondary: #0D1B33;
+      --bg-card: #12192e;
+      --blue-deep: #12407A;
+      --blue-mid: #2563EB;
+      --blue-light: #38BDF8;
+      --blue-glow: #7DD3FC;
+      --white: #FFFFFF;
+      --gray: #94a3b8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-primary);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 15, 30, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+      border-bottom: 1px solid rgba(37, 99, 235, 0.15);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--white);
+    }
+
+    .nav-logo img {
+      height: 48px;
+      width: 48px;
+      object-fit: contain;
+    }
+
+    .nav-logo span {
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 400;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--blue-light); }
+
+    .mobile-menu {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-logo {
+      width: 340px;
+      height: 340px;
+      object-fit: contain;
+      margin-bottom: 2rem;
+      filter: drop-shadow(0 0 40px rgba(56, 189, 248, 0.2));
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--blue-light), var(--blue-mid));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero .subtitle {
+      font-size: 1.1rem;
+      color: var(--gray);
+      font-weight: 300;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .hero .tagline {
+      font-size: 1.15rem;
+      color: var(--blue-light);
+      font-weight: 500;
+      letter-spacing: 4px;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 5rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--gray);
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      font-size: 0.95rem;
+    }
+
+    .divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue-mid), var(--blue-light));
+      margin: 0 auto 2rem;
+      border-radius: 2px;
+    }
+
+    /* ABOUT */
+    .about-text {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+      color: var(--gray);
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    /* APPS */
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .app-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(37, 99, 235, 0.12);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .app-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(56, 189, 248, 0.3);
+      box-shadow: 0 8px 40px rgba(37, 99, 235, 0.1);
+    }
+
+    .app-card img {
+      width: 200px;
+      height: 200px;
+      border-radius: 22px;
+      object-fit: cover;
+      margin-bottom: 1.5rem;
+    }
+
+    .app-card img.bb-logo {
+      width: 240px;
+      height: 240px;
+    }
+
+    .app-card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .app-card p {
+      color: var(--gray);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .app-badge {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.35rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      border-radius: 20px;
+      background: rgba(37, 99, 235, 0.15);
+      color: var(--blue-light);
+      letter-spacing: 0.5px;
+    }
+
+    /* CONTACT */
+    .contact-info {
+      text-align: center;
+      color: var(--gray);
+      font-size: 0.95rem;
+    }
+
+    .contact-info a {
+      color: var(--blue-light);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .contact-info a:hover {
+      color: var(--blue-glow);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid rgba(37, 99, 235, 0.1);
+      color: var(--gray);
+      font-size: 0.8rem;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 15, 30, 0.95);
+        padding: 1.5rem 2rem;
+        gap: 1rem;
+        border-bottom: 1px solid rgba(37, 99, 235, 0.15);
+      }
+      .mobile-menu { display: block; }
+      .hero-logo { width: 130px; height: 130px; }
+      .apps-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <img src="images/bis.png" alt="BIS Logo">
+      <span>BIS LLC</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#apps">Our Apps</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="mobile-menu" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img src="images/bis.png" alt="Birkes Innovative Solutions" class="hero-logo">
+    <h1>BIRKES <span class="highlight">INNOVATIVE</span> SOLUTIONS</h1>
+    <p class="subtitle">Limited Liability Company</p>
+    <p class="tagline">Innovate. Build. Transform.</p>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2 class="section-title">About Us</h2>
+    <div class="divider"></div>
+    <p class="about-text">
+    Birkes Innovative Solutions LLC is a technology company specializing in mobile applications, web applications, data-driven solutions, and custom software development. We design and build products that solve real-world problems and deliver exceptional user experiences. With a growing portfolio and a passion for innovation, we are committed to creating technology that makes an impact.
+    </p>
+    <p class="about-text">
+    Founded on April 28th, 2024.
+    </p>
+  </section>
+
+  <!-- APPS -->
+  <section id="apps">
+    <h2 class="section-title">Our Apps</h2>
+    <div class="divider"></div>
+    <p class="section-subtitle">Crafted with care, built for everyone.</p>
+    <div class="apps-grid">
+
+      <div class="app-card">
+        <img src="images/beatblossom.png" alt="BeatBlossom" class="bb-logo">
+        <h3>BeatBlossom</h3>
+        <p>Discover new music, listen to your favorites, and let your taste bloom. A fresh way to explore and enjoy music.</p>
+        <span class="app-badge">Music Discovery</span>
+      </div>
+
+      <div class="app-card">
+        <img src="images/stocktapper.png" alt="Stock Tapper">
+        <h3>Stock Tapper</h3>
+        <p>A fun, engaging idle tapper game where you grow your virtual stock portfolio one tap at a time.</p>
+        <span class="app-badge">Mobile Game</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 class="section-title">Contact</h2>
+    <div class="divider"></div>
+    <div class="contact-info">
+      <p>Have a question or want to get in touch?</p>
+      <p style="margin-top: 0.75rem;">
+        <a href="mailto:info@bis-llc.com">info@bis-llc.com</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    &copy; 2026 Birkes Innovative Solutions LLC. All rights reserved.
+  </footer>
+
+</body>
+</html>
