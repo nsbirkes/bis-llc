@@ -29,7 +29,7 @@ This website is hosted using GitHub Pages and connected to the BIS LLC custom do
 
 For business inquiries:
 
-**Email:** [contact@bis-llc.com](mailto:contact@bis-llc.com)
+**Email:** [info@bis-llc.com](mailto:info@bis-llc.com)
 
 ## Legal
 
