@@ -1,0 +1,55 @@
+{
+  "name": "BIS Analytics",
+  "dataColors": [
+    "#38BDF8",
+    "#2563EB",
+    "#7DD3FC",
+    "#12407A",
+    "#0D1B33",
+    "#60A5FA",
+    "#93C5FD",
+    "#FFFFFF"
+  ],
+  "background": "#0A0F1E",
+  "foreground": "#FFFFFF",
+  "tableAccent": "#38BDF8",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "title": [
+          {
+            "show": true,
+            "fontColor": { "solid": { "color": "#FFFFFF" } },
+            "fontSize": 14,
+            "fontFamily": "Segoe UI Semibold"
+          }
+        ],
+        "background": [
+          {
+            "show": false
+          }
+        ],
+        "labels": [
+          {
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "fontSize": 11
+          }
+        ]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#0A0F1E"
+              }
+            },
+            "transparency": 0
+          }
+        ]
+      }
+    }
+  }
+}
