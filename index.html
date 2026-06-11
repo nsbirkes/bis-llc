@@ -209,6 +209,9 @@
       padding: 2.5rem 2rem;
       text-align: center;
       transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .app-card:hover {
@@ -217,17 +220,25 @@
       box-shadow: 0 8px 40px rgba(37, 99, 235, 0.1);
     }
 
-    .app-card img {
-      width: 200px;
-      height: 200px;
-      border-radius: 22px;
-      object-fit: cover;
+    .app-card .app-icon-wrap {
+      width: 240px;
+      height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       margin-bottom: 1.5rem;
     }
 
+    .app-card img {
+      max-width: 200px;
+      max-height: 200px;
+      border-radius: 22px;
+      object-fit: cover;
+    }
+
     .app-card img.bb-logo {
-      width: 240px;
-      height: 240px;
+      max-width: 240px;
+      max-height: 240px;
     }
 
     .app-card h3 {
@@ -240,6 +251,7 @@
       color: var(--gray);
       font-size: 0.9rem;
       line-height: 1.7;
+      flex: 1;
     }
 
     .app-badge {
@@ -252,6 +264,13 @@
       background: rgba(37, 99, 235, 0.15);
       color: var(--blue-light);
       letter-spacing: 0.5px;
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .app-badge:hover {
+      background: rgba(37, 99, 235, 0.3);
+      color: var(--blue-glow);
     }
 
     /* CONTACT */
@@ -345,17 +364,21 @@
     <div class="apps-grid">
 
       <div class="app-card">
-        <img src="images/beatblossom.png" alt="BeatBlossom" class="bb-logo">
+        <div class="app-icon-wrap">
+          <img src="images/beatblossom.png" alt="BeatBlossom" class="bb-logo">
+        </div>
         <h3>BeatBlossom</h3>
         <p>Discover new music, listen to your favorites, and let your taste bloom. A fresh way to explore and enjoy music.</p>
-        <span class="app-badge">Music Discovery</span>
+        <a href="https://beatblossom.com" target="_blank" rel="noopener noreferrer" class="app-badge">Music Discovery</a>
       </div>
 
       <div class="app-card">
-        <img src="images/stocktapper.png" alt="Stock Tapper">
+        <div class="app-icon-wrap">
+          <img src="images/stocktapper.png" alt="Stock Tapper">
+        </div>
         <h3>Stock Tapper</h3>
         <p>A fun, engaging idle tapper game where you grow your virtual stock portfolio one tap at a time.</p>
-        <span class="app-badge">Mobile Game</span>
+        <a href="https://play.google.com/store/apps/details?id=com.BIS_LLC.stock_tapper&hl=en_US" target="_blank" rel="noopener noreferrer" class="app-badge">Mobile Game</a>
       </div>
 
     </div>
