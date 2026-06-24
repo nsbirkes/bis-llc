@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BeatBlossom — Birkes Innovative Solutions LLC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-primary: #0A0F1E;
+      --bg-secondary: #0D1B33;
+      --bg-card: #12192e;
+      --blue-deep: #12407A;
+      --blue-mid: #2563EB;
+      --blue-light: #38BDF8;
+      --blue-glow: #7DD3FC;
+      --white: #FFFFFF;
+      --gray: #94a3b8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-primary);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 15, 30, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+      border-bottom: 1px solid rgba(37, 99, 235, 0.15);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--white);
+    }
+
+    .nav-logo img {
+      height: 48px;
+      width: 48px;
+      object-fit: contain;
+    }
+
+    .nav-logo span {
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 400;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--blue-light); }
+
+    .mobile-menu {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .app-hero {
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .app-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .app-hero-logo {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 36px;
+      margin-bottom: 2rem;
+      filter: drop-shadow(0 0 40px rgba(56, 189, 248, 0.2));
+    }
+
+    .app-hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .app-hero h1 .highlight {
+      background: linear-gradient(135deg, var(--blue-light), var(--blue-mid));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .app-hero .tagline {
+      font-size: 1.1rem;
+      color: var(--gray);
+      font-weight: 300;
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+
+    .download-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 12px;
+      background: var(--blue-mid);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .download-btn:hover {
+      background: var(--blue-deep);
+      transform: translateY(-2px);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 5rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--gray);
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      font-size: 0.95rem;
+    }
+
+    .divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue-mid), var(--blue-light));
+      margin: 0 auto 2rem;
+      border-radius: 2px;
+    }
+
+    /* FEATURES */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(37, 99, 235, 0.12);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(56, 189, 248, 0.3);
+      box-shadow: 0 8px 40px rgba(37, 99, 235, 0.1);
+    }
+
+    .feature-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-card p {
+      color: var(--gray);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .feature-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    /* SCREENSHOTS */
+    .screenshots-scroll {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      padding: 1rem 0 2rem;
+      scroll-snap-type: x mandatory;
+    }
+
+    .screenshots-scroll img {
+      width: 250px;
+      height: auto;
+      border-radius: 16px;
+      border: 1px solid rgba(37, 99, 235, 0.15);
+      scroll-snap-align: start;
+      flex-shrink: 0;
+    }
+
+    .screenshots-placeholder {
+      text-align: center;
+      color: var(--gray);
+      font-size: 0.9rem;
+      padding: 3rem;
+      border: 1px dashed rgba(37, 99, 235, 0.3);
+      border-radius: 16px;
+    }
+
+    /* FAQ */
+    .faq-list {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid rgba(37, 99, 235, 0.12);
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 1.25rem 1.5rem;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: color 0.3s;
+    }
+
+    .faq-question:hover { color: var(--blue-light); }
+
+    .faq-question::after {
+      content: '+';
+      font-size: 1.3rem;
+      font-weight: 300;
+      transition: transform 0.3s;
+    }
+
+    .faq-item.open .faq-question::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .faq-answer-inner {
+      padding: 0 1.5rem 1.25rem;
+      color: var(--gray);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 200px;
+    }
+
+    /* SUPPORT */
+    .support-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(37, 99, 235, 0.12);
+      border-radius: 16px;
+      padding: 2.5rem;
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .support-card p {
+      color: var(--gray);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .support-card a {
+      color: var(--blue-light);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .support-card a:hover { color: var(--blue-glow); }
+
+    .support-links {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .support-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: 10px;
+      border: 1px solid rgba(37, 99, 235, 0.25);
+      color: var(--blue-light);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .support-link:hover {
+      background: rgba(37, 99, 235, 0.1);
+      border-color: rgba(56, 189, 248, 0.4);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid rgba(37, 99, 235, 0.1);
+      color: var(--gray);
+      font-size: 0.8rem;
+    }
+
+    footer a {
+      color: var(--blue-light);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: var(--blue-glow); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 15, 30, 0.95);
+        padding: 1.5rem 2rem;
+        gap: 1rem;
+        border-bottom: 1px solid rgba(37, 99, 235, 0.15);
+      }
+      .mobile-menu { display: block; }
+      .app-hero-logo { width: 140px; height: 140px; }
+      .features-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="../index.html" class="nav-logo">
+      <img src="../images/bis.png" alt="BIS Logo">
+      <span>BIS LLC</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#support">Support</a></li>
+    </ul>
+    <button class="mobile-menu" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+  </nav>
+
+  <!-- APP HERO -->
+  <section class="app-hero">
+    <img src="../images/beatblossom.png" alt="BeatBlossom" class="app-hero-logo">
+    <h1><span class="highlight">BeatBlossom</span></h1>
+    <p class="tagline">Discover new music, listen to your favorites, and let your taste bloom. A fresh way to explore and enjoy music.</p>
+    <div class="download-buttons">
+      <a href="https://beatblossom.com" target="_blank" rel="noopener noreferrer" class="download-btn">Visit BeatBlossom.com</a>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <h2 class="section-title">Features</h2>
+    <div class="divider"></div>
+    <p class="section-subtitle">Everything you need to discover and enjoy music.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">&#127925;</span>
+        <h3>Music Discovery</h3>
+        <p>Explore new artists and tracks tailored to your unique taste. Let the algorithm surprise you with hidden gems.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">&#127911;</span>
+        <h3>Personalized Playlists</h3>
+        <p>Curated playlists that evolve with your listening habits. Your music, always fresh.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">&#128260;</span>
+        <h3>Seamless Streaming</h3>
+        <p>High-quality audio streaming with smooth playback. Listen without interruption.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">&#127793;</span>
+        <h3>Watch Your Taste Bloom</h3>
+        <p>Track how your music preferences grow and change over time with visual insights.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">&#128269;</span>
+        <h3>Smart Search</h3>
+        <p>Find exactly what you're looking for with powerful search across artists, albums, tracks, and genres.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">&#127760;</span>
+        <h3>Cross-Platform Access</h3>
+        <p>Access your music and playlists from any device with a browser. Your library is always with you.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREENSHOTS -->
+  <section id="screenshots">
+    <h2 class="section-title">Screenshots</h2>
+    <div class="divider"></div>
+    <div class="screenshots-placeholder">
+      <p>Screenshots coming soon.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="divider"></div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">What is BeatBlossom?</button>
+        <div class="faq-answer">
+          <p class="faq-answer-inner">BeatBlossom is a music discovery app that helps you find new artists, build personalized playlists, and enjoy seamless streaming — all designed to let your musical taste bloom.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Is BeatBlossom free to use?</button>
+        <div class="faq-answer">
+          <p class="faq-answer-inner">BeatBlossom offers a free tier with access to core features. Premium options are available for enhanced functionality.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">What platforms is BeatBlossom available on?</button>
+        <div class="faq-answer">
+          <p class="faq-answer-inner">BeatBlossom is available as a web application. Visit beatblossom.com to get started.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">How do I report a bug or request a feature?</button>
+        <div class="faq-answer">
+          <p class="faq-answer-inner">Please contact us at info@bis-llc.com with any bug reports or feature requests. We value your feedback and respond to all inquiries.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUPPORT -->
+  <section id="support">
+    <h2 class="section-title">Support</h2>
+    <div class="divider"></div>
+    <div class="support-card">
+      <p>Need help with BeatBlossom? We're here for you.</p>
+      <div class="support-links">
+        <a href="mailto:info@bis-llc.com" class="support-link">&#9993; Email Support</a>
+        <a href="../index.html#contact" class="support-link">&#128172; Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 Birkes Innovative Solutions LLC. All rights reserved.</p>
+    <p style="margin-top: 0.5rem;"><a href="../index.html">&larr; Back to BIS LLC</a></p>
+  </footer>
+
+</body>
+</html>
